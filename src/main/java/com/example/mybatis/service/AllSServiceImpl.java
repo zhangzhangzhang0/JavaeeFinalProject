@@ -77,4 +77,13 @@ public class AllSServiceImpl implements AllSService {
         return homeworkDao.editHW(homeworkId,num);
     }
 
+    @Override
+    public boolean deleteStudentHomework(HttpServletRequest req) {
+        StudentHomework sh = new StudentHomework();
+        sh.setStudentId(Long.parseLong(req.getParameter("sId")));
+        sh.setHomeworkId(Long.parseLong(req.getParameter("hwId")));
+
+        return studentHomeworkDao.deleteHomework2(sh.getStudentId(),sh.getHomeworkId());
+    }
+
 }

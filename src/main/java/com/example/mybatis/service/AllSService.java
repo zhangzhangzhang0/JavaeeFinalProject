@@ -15,5 +15,6 @@ public interface AllSService {
     List<Homework> selectAll3();
     StudentHomework find1(Long studentId, Long homeworkId);
     boolean editHW(Long homeworkId, Long num);
+    boolean deleteStudentHomework(HttpServletRequest req);
 
 }

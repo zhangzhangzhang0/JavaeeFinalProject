@@ -58,21 +58,20 @@ public class ApiController {
 
     @RequestMapping("/login")
 
-    public String login (HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    public void login (HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         System.out.println("11");
         List<Student> list= allSService.login(req);
         if(null == list || list.size() <= 0){
             req.getRequestDispatcher("/Login.jsp").forward(req,resp);
-            return "login";
+           // return "login";
         }else{
             update1(req,resp);
             req.getRequestDispatcher("/SSubmit.jsp").forward(req,resp);
-            return "login";
+          //  return "login";
         }
 
     }
     @RequestMapping("/Tlogin")
-
     public void Tlogin (HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         System.out.println("22");
        // List<Student> list= allSService.login(req);
@@ -123,9 +122,10 @@ public class ApiController {
     @RequestMapping("/SubmitHomeworkServlet")
     public void submitHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("utf-8");
+        boolean j= allSService.deleteStudentHomework(req);
         boolean i = allSService.addHomework(req);
 
-        if(i=true){
+        if(i==true && j==true){
             //完成数据库操作，返回响应给jsp
             System.out.println("true");
 

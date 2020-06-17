@@ -110,7 +110,8 @@
                             <th>作业标题</th>
                             <th>作业内容</th>
                             <th>创建时间</th>
-                            <th>提交作业</th>
+                            <th>状态</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <%
@@ -130,6 +131,7 @@
                         <td><%=h.getHomeworkTitle()%></td>
                         <td><%=h.getHomeworkContent()%></td>
                         <td><%=h.getCreateTime()%></td>
+                        <td>未提交</td>
                         <td><a href="${pageContext.request.contextPath}/submit2?hwId=<%=h.getId()%>&&sId=${pageContext.request.getParameter("sId")}&&hwTitle=<%=h.getHomeworkTitle()%>&&hwContent=<%=h.getHomeworkContent()%>"><input type="button" value="提交" class="btn btn-sm m-t-10"></a></td>
 
                     </tr>
@@ -144,7 +146,8 @@
                         <td><%=sh.getHomeworkTitle()%></td>
                         <td><%=sh.getHomeworkContent()%></td>
                         <td><%=sh.getCreateTime()%></td>
-                        <td><%=sh.getScore()%></td>
+                        <td>已提交 分数:<%=sh.getScore()%></td>
+                        <td><a href="${pageContext.request.contextPath}/submit2?hwId=<%=sh.getHomeworkId()%>&&sId=${pageContext.request.getParameter("sId")}&&hwTitle=<%=sh.getHomeworkTitle()%>&&hwContent=<%=sh.getHomeworkContent()%>"><input type="button" value="更新作业" class="btn btn-sm m-t-10"></a></td>
                     </tr>
 
 

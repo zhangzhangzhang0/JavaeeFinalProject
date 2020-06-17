@@ -25,6 +25,10 @@
         DELETE FROM `s_student_homework`WHERE student_id=#{studentId}
     </delete>
 
+    <delete id="deleteHomework2" >
+        DELETE FROM `s_student_homework`WHERE student_id=#{studentId} AND homework_id=#{homeworkId}
+    </delete>
+
     <select id="find1" resultMap="shw">
         SELECT * FROM s_student_homework WHERE student_id=#{studentId} AND homework_id=#{homeworkId}
     </select>

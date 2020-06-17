@@ -8,7 +8,6 @@ import java.util.List;
 @Repository
 public interface HomeworkDao {
     boolean addHomework(Homework h);
-
     boolean editHW(Long homeworkId, Long num);
     List<Homework> selectAll3();
 }
