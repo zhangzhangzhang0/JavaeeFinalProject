@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.dao.TeacherDao">
+
+    <select id="find4" resultType="com.example.mybatis.model.Teacher" >
+        SELECT * FROM s_teacher WHERE id=#{id} AND pw=#{pw}
+    </select>
+
+    <insert id="addTeacher" parameterType="Teacher">
+        INSERT INTO `s_teacher`(id,pw) VALUE(#{id}, #{pw})
+    </insert>
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.dao.StudentHomeworkDao">
+    <resultMap id="shw" type="com.example.mybatis.model.StudentHomework">
+        <id column="id" property="id" />
+        <result column="student_id" property="studentId"/>
+        <result column="homework_id" property="homeworkId"/>
+        <result column="score" property="score"/>
+        <result column="homework_title" property="homeworkTitle"/>
+        <result column="homework_content" property="homeworkContent"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <insert id="addHomework" parameterType="StudentHomework">
+        INSERT INTO `s_student_homework`(student_id,homework_id,homework_title,homework_content,create_time) VALUE(#{studentId},#{homeworkId},#{homeworkTitle},#{homeworkContent},#{createTime})
+    </insert>
+
+    <update id="editHomework" parameterType="Long">
+        UPDATE s_student_homework SET score=#{score} WHERE student_id=#{studentId} AND homework_id=#{homeworkId}
+    </update>
+
+    <delete id="deleteHomework" parameterType="Long">
+        DELETE FROM `s_student_homework`WHERE student_id=#{studentId}
+    </delete>
+
+    <select id="find1" resultMap="shw">
+        SELECT * FROM s_student_homework WHERE student_id=#{studentId} AND homework_id=#{homeworkId}
+    </select>
+
+    <select id="find12" resultMap="shw" parameterType="Long">
+        SELECT * FROM s_student_homework WHERE homework_id=#{homeworkId}
+    </select>
+
+    <select id="selectAll1" resultMap="shw">
+        SELECT * FROM s_student_homework
+    </select>
+
+
+</mapper>

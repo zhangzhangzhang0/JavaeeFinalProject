@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.dao.StudentDao">
+
+    <resultMap id="stu" type="com.example.mybatis.model.Student">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO `s_student`(id,name,create_time) VALUE(#{id}, #{name}, #{createTime})
+    </insert>
+
+    <delete id="deleteStudent" parameterType="Student">
+        DELETE FROM `s_student` WHERE id=#{id}
+    </delete>
+
+    <select id="find2" resultMap="stu" parameterType="Long">
+        SELECT * FROM s_student WHERE id=#{id}
+    </select>
+
+    <select id="selectAll2" resultMap="stu" >
+        SELECT * FROM s_student
+    </select>
+
+</mapper>
